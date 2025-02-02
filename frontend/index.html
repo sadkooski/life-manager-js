@@ -11,30 +11,47 @@
         <div class="todo-app">
             <h2>Recent Tasks</h2>
             <div class="row">
-                <input type="text" id="input-box" placeholder="Add new task">
-                <button>+</button>
+                <div class="row-input">
+                    <textarea  class="input-box input-task" placeholder="+ Add New Task"></textarea>
+                    <div class="row-input-elements">
+                        <textarea type="text" class="input-box input-descr" placeholder="+ Add Description"></textarea>
+                        <div class="row-input-tags">
+                            <button class="row-tag-button">
+                                <img class="plus-svg" src="/frontend/public/icons/plus.svg"> Tag
+                            </button>
+                            <button class="row-tag-button">
+                                <img class="plus-svg" src="/frontend/public/icons/plus.svg"> List
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                    <button class="row-add-button" onclick="addTask()">
+                        <img class="plus-svg" src="/frontend/public/icons/plus.svg"> Add
+                    </button>
             </div>
             <ul id="list-container">
-                <li>
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-on.svg">
+                <!-- <li class="checked">
+                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
+                    <img class="checkpoint-on-svg" src="/frontend/public/icons/selection-box-on.svg">
                     Task 1
                     <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
                     <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-                </li>
-                <li>
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-on.svg">
+                </li> -->
+                <!-- <li>
+                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
                     Task 2
                     <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
                     <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
                 </li>
                 <li>
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-on.svg">
+                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
                     Task 3
                     <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
                     <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-                </li>
+                </li> -->
+            </ul>
         </div>
     </div>
-
+<script src="/frontend/js/to-do.js"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@ min-height: 100vh;
 background: rgba(39, 38, 53, 1);
 padding: 10px;
 }
+
 .todo-app{
     width: 100%;
     max-width: 885px;
@@ -19,42 +20,124 @@ padding: 10px;
     padding: 40px 40px 70px;
     border-radius: 40px;
 }
+
 .todo-app h2{
     color: rgba(39, 38, 53, 1);
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
+
 .row{
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 5px 20px ;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 20px;
     border: 2px solid;
     border-image-source: linear-gradient(to right, rgba(223, 223, 223, 0.5), rgb(223, 223, 223), rgba(223, 223, 223, 0.5));
     border-image-slice: 1;
     border-left: 0;
     border-right: 0;
-    border-radius: 30px;
 }
-input{
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding: 10px;
-    font-size: 16px;
+
+
+.row-input-elements{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
 }
+
+.row-input-tags{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.row-input-tags-active{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.row-tag-button{
+    font-size: 8px;
+    padding: 0.5em 0.875em;
+    padding-right: 1em;
+}
+
+.row-tag-button img{
+    height: 8px;
+    width: 8px;
+}
+
+.row-add-button{
+    font-size: 20px;
+    padding: 0.5em 0.875em;
+    padding-right: 1em;
+}
+
+.row-add-button img{
+    height: 20px;
+    width: 20px;
+}
+
 button{
+    display: flex;
+    align-items: center;
     border: none;
     outline: none;
-    padding: 8px 30px;
-    background: transparent;
-    color: rgb(147, 147, 147);
-    font-size: 35px;
+    background: rgba(218, 218, 218, 0.33);
+    color: rgba(170, 170, 170, 1);
+    border-radius: 60px;
     cursor: pointer;
+
 }
+
+.row-input{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input-box{
+    /* word-wrap: break-word;
+    white-space: pre-wrap; */
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    /* box-sizing: content-box; */
+    overflow-y: auto;
+    color: rgba(85, 85, 85, 1);
+}
+.input-box::-webkit-scrollbar {
+    display: none;
+}
+
+.input-task{
+    height: 24px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.input-descr{
+display: flex;
+height: 15px;
+/* max-height: 72px; */
+font-size: 13px;
+max-width: 13.1ch;
+}
+
+.input-descr::placeholder{
+font-size: 12px;
+color: rgba(170, 170, 170, 1);
+}
+
 ul li{
+    position: relative;
     display: flex;
     align-items: center;
     list-style: none;
@@ -66,14 +149,32 @@ ul li{
     border-image-source: linear-gradient(to right, rgba(223, 223, 223, 0.5), rgb(223, 223, 223), rgba(223, 223, 223, 0.5));
     border-image-slice: 1;
 }
+
 ul li:last-child {
     border-bottom: none;
 }
+
+ul li.checked {
+text-decoration: line-through;
+color: #555;
+}
+/*
+ul li.checked::before {
+    background-image: url(/frontend/public/icons/selection-box-on.svg);
+} */
+
 .checkpoint-off-svg{
     height: 30px;
     width: 30px;
     margin-right: 10px;
 }
+.checkpoint-on-svg{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    display: none;
+}
+
 .chevron-right-svg{
     margin-left: 10px;
     display: flex;
@@ -81,10 +182,17 @@ ul li:last-child {
     height: 35px;
     width: 35px;
 }
+
 .trash-svg{
     margin-left: auto;
     display: flex;
     justify-content: flex-end;
     height: 25px;
     width: 25px;
+}
+
+.plus-svg{
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
 }
