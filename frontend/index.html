@@ -16,12 +16,16 @@
                     <div class="row-input-elements">
                         <textarea type="text" class="input-box input-descr" placeholder="+ Add Description"></textarea>
                         <div class="row-input-tags">
-                            <button class="row-tag-button">
-                                <img class="plus-svg" src="/frontend/public/icons/plus.svg"> Tag
-                            </button>
-                            <button class="row-tag-button">
-                                <img class="plus-svg" src="/frontend/public/icons/plus.svg"> List
-                            </button>
+                            <div class="tag-container">
+                                <button class="row-tag-button" onclick="toggleInput('tag')">
+                                    <img class="plus-svg" src="/frontend/public/icons/plus.svg"> Tag
+                                </button>
+                            </div>
+                            <div class="list-container">
+                                <button class="row-tag-button" onclick="toggleInput('list')">
+                                    <img class="plus-svg" src="/frontend/public/icons/plus.svg"> List
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -30,25 +34,7 @@
                     </button>
             </div>
             <ul id="list-container">
-                <!-- <li class="checked">
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
-                    <img class="checkpoint-on-svg" src="/frontend/public/icons/selection-box-on.svg">
-                    Task 1
-                    <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
-                    <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-                </li> -->
-                <!-- <li>
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
-                    Task 2
-                    <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
-                    <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-                </li>
-                <li>
-                    <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
-                    Task 3
-                    <img  class="trash-svg" src="/frontend/public/icons/trash.svg">
-                    <img  class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-                </li> -->
+
             </ul>
         </div>
     </div>
