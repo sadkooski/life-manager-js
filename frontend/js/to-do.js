@@ -3,6 +3,9 @@ const inputDescription = document.querySelector(".input-descr");
 const listContainer = document.getElementById("list-container");
 const tagsContainer = document.querySelector(".row-input-elements");
 
+const tagOptions = ["Work", "Personal", "Urgent", "Low Priority"];
+const listOptions = ["Shopping", "Chores", "Meetings", "Fitness"];
+
 inputDescription.addEventListener("input", function () {
     if (inputDescription.value !== "") {
         tagsContainer.style.flexDirection = "column";
@@ -58,10 +61,15 @@ function toggleInput(type) {
     let button = container.querySelector('.row-tag-button');
     let input = document.querySelector('.dynamic-input');
     let markupInput = `<input type="text" class="dynamic-input" name="${type}" placeholder="${type === 'tag' ? 'Enter tag...' : 'Enter list name...'}">`;
+    let dropdown = container.querySelector(type === 'tag' ? '.tag-dropdown' : '.list-dropdown');
+    let options = type === 'tag' ? tagOptions : listOptions;
 
     if (!input) {
         container.insertAdjacentHTML("afterbegin", markupInput);
+        dropdown.style.display = 'block';
+        dropdown.innerHTML = options.map(option => `<div class="dropdown-item" onclick="selectOption('${type}', '${option}')">${option}</div>`).join('');
     } else {
+        dropdown.style.display = 'none';
         let markupTag = `<span class="addedTag"> ${type === 'tag' ? `newTag = ${input.value}` : `newList = ${input.value}`} </span>`
         if (input.value === '' && input.name === type) {
             alert(`Write a name of ${type === 'tag' ? 'tag' : 'list'}`);
@@ -74,6 +82,19 @@ function toggleInput(type) {
         }
     }
 }
+
+function selectOption(type, value) {
+    let input = document.querySelector(type === 'tag' ? '.tag-container .dynamic-input' : '.list-container .dynamic-input');
+    let description = document.querySelector('.input-descr');
+    
+    if (input) {
+        input.value = value;
+    }
+    
+    description.value += description.value ? `, ${value}` : value;
+}
+
+loadOptions();
 
 // 1. po klikniecu na tag button dodac focus na input
 // 2. dodać listę domyślnych wartości po kliknieciu na przycisk
