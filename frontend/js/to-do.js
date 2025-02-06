@@ -57,19 +57,23 @@ function addTask(){
 }
 
 function toggleInput(type) {
-    let container = document.querySelector(type === 'tag' ? '.tag-container' : '.list-container');
+    let container = document.querySelector(type === 'tag' ? '.tag-input-container' : '.list-input-container');
     let button = container.querySelector('.row-tag-button');
     let input = document.querySelector('.dynamic-input');
-    let markupInput = `<input type="text" class="dynamic-input" name="${type}" placeholder="${type === 'tag' ? 'Enter tag...' : 'Enter list name...'}">`;
-    let dropdown = container.querySelector(type === 'tag' ? '.tag-dropdown' : '.list-dropdown');
+    let dropdown = document.querySelector(type === 'tag' ? '.tag-dropdown' : '.list-dropdown');
     let options = type === 'tag' ? tagOptions : listOptions;
+    let markupInput = `<input type="text" class="dynamic-input" name="${type}" placeholder="${type === 'tag' ? 'Enter tag...' : 'Enter list name...'}">`;
 
     if (!input) {
         container.insertAdjacentHTML("afterbegin", markupInput);
-        dropdown.style.display = 'block';
-        dropdown.innerHTML = options.map(option => `<div class="dropdown-item" onclick="selectOption('${type}', '${option}')">${option}</div>`).join('');
+        input = container.querySelector('.dynamic-input');
+        input.focus();
+        tagsContainer.style.flexDirection = 'column';
+        tagsContainer.style.alignItems = 'flex-start';
+        dropdown.style.visibility = 'visible';
+        dropdown.innerHTML = options.map(option => `<button class="dropdown-item" onclick="selectOption('${type}', '${option}')">${option}</button>`).join('');
     } else {
-        dropdown.style.display = 'none';
+        dropdown.style.visibility = 'hidden';
         let markupTag = `<span class="addedTag"> ${type === 'tag' ? `newTag = ${input.value}` : `newList = ${input.value}`} </span>`
         if (input.value === '' && input.name === type) {
             alert(`Write a name of ${type === 'tag' ? 'tag' : 'list'}`);
@@ -84,7 +88,7 @@ function toggleInput(type) {
 }
 
 function selectOption(type, value) {
-    let input = document.querySelector(type === 'tag' ? '.tag-container .dynamic-input' : '.list-container .dynamic-input');
+    let input = document.querySelector(type === 'tag' ? '.tag-input-container .dynamic-input' : '.list-input-container .dynamic-input');
     let description = document.querySelector('.input-descr');
     
     if (input) {
@@ -94,7 +98,44 @@ function selectOption(type, value) {
     description.value += description.value ? `, ${value}` : value;
 }
 
-loadOptions();
+// loadOptions();
+
+document.addEventListener("click", function (event) {
+    // Pobranie kontenerów dla tagów i list
+    let tagContainer = document.querySelector(".tag-input-container");
+    let listContainer = document.querySelector(".list-input-container");
+
+    let clickedTag = tagContainer && tagContainer.contains(event.target);
+    let clickedList = listContainer && listContainer.contains(event.target);
+
+    // Pobranie inputów i dropdownów
+    let tagInput = document.querySelector(".tag-input-container .dynamic-input");
+    let listInput = document.querySelector(".list-input-container .dynamic-input");
+    let tagDropdown = document.querySelector(".tag-dropdown");
+    let listDropdown = document.querySelector(".list-dropdown");
+
+    // Pobranie przycisków
+    let tagButton = document.querySelector(".tag-input-container .row-tag-button");
+    let listButton = document.querySelector(".list-input-container .row-tag-button");
+
+    // Jeśli kliknięto **poza** tag-inputem, dropdownem i przyciskiem, zamknij je
+    if (!clickedTag && tagInput && tagDropdown && !event.target.closest(".dynamic-input, .tag-dropdown, .row-tag-button")) {
+        if (tagInput.value.trim() === "") {
+            tagInput.remove(); // Jeśli input jest pusty, usuń go
+        }
+        tagDropdown.style.visibility = "hidden"; // Ukryj dropdown
+    }
+
+    // Jeśli kliknięto **poza** list-inputem, dropdownem i przyciskiem, zamknij je
+    if (!clickedList && listInput && listDropdown && !event.target.closest(".dynamic-input, .list-dropdown, .row-tag-button")) {
+        if (listInput.value.trim() === "") {
+            listInput.remove(); // Jeśli input jest pusty, usuń go
+        }
+        listDropdown.style.visibility = "hidden"; // Ukryj dropdown
+    }
+});
+
+
 
 // 1. po klikniecu na tag button dodac focus na input
 // 2. dodać listę domyślnych wartości po kliknieciu na przycisk
@@ -108,28 +149,3 @@ loadOptions();
 
 //9. Strukturyzacja tasków na katalagoi, tagi i listy oddzilne okno z podzialem i podpisami
 //10. wyszukiawanie po oknie katalgów poszczegolnych tasków i po kliknieciu w rekord zaladowanie odpowiednie go taska w oknie powiekszonym z edycją
-
-
-
-
-
-
-
-
-
-
-
-
-
- // } else {
-        //     input.remove();
-        //     inputDescription.insertAdjacentHTML("afterend", markupTag)
-        // }
-        
-        // if (input.name !== type) {
-        //     console.log(input.name, type);
-        //     input.remove();
-        //     inputDescription.insertAdjacentHTML("afterend", markupTag)
-        // }
-        // // input.remove();
-        // button.innerHTML = `<img class="plus-svg" src="/frontend/public/icons/plus.svg"> ${type.charAt(0).toUpperCase() + type.slice(1)}`;
