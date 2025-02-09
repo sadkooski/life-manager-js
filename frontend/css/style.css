@@ -129,6 +129,7 @@ height: 15px;
 /* max-height: 72px; */
 font-size: 13px;
 max-width: 13.1ch;
+margin-bottom: 5px;
 }
 
 .input-descr::placeholder{
@@ -168,7 +169,7 @@ ul li.checked::before {
     width: 30px;
     margin-right: 10px;
 }
-.checkpoint-on-svg{
+.checkpoint-on-svg{ 
     position: absolute;
     height: 30px;
     width: 30px;
@@ -209,11 +210,11 @@ border: solid 1px rgba(85, 85, 85, 1);
 }
 
 .tag-dropdown {
-    visibility: hidden;
+    display: none;
 }
 
 .list-dropdown {
-    visibility: hidden;
+    display: none;
 }
 
 .dropdown-item {
@@ -241,5 +242,30 @@ border: solid 1px rgba(85, 85, 85, 1);
 }
 
 .input-container {
-    
+    display: flex;
+    flex-direction: column;
+}
+
+.addedTag {
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    background: rgba(218, 218, 218, 0.33);
+    color: rgba(170, 170, 170, 1);
+    border-radius: 60px;
+    cursor: pointer;
+    font-size: 8px;
+    padding: 0.5em 0.875em;
+    padding-right: 1em;
+}
+
+.tag-list {
+    display: flex;
+    gap: 5px;
+}
+
+.tagsDiv {
+    display: flex;
+
 }
