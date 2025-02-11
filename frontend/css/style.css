@@ -8,14 +8,14 @@ box-sizing: border-box;
 .container{
 width: 100%;
 min-height: 100vh;
-background: rgba(39, 38, 53, 1);
+background: rgb(162, 161, 184);
 padding: 10px;
 }
 
 .todo-app{
     width: 100%;
     max-width: 885px;
-    background: rgba(232, 243, 243, 1);
+    background: white;
     margin: 100px auto 20px;
     padding: 40px 40px 70px;
     border-radius: 40px;
@@ -129,6 +129,14 @@ height: 15px;
 /* max-height: 72px; */
 font-size: 13px;
 max-width: 13.1ch;
+/* margin-bottom: 5px; */
+}
+
+.input-descr-displayed {
+display: flex;
+height: 15px;
+font-size: 13px;
+max-width: 13.1ch;
 margin-bottom: 5px;
 }
 
@@ -169,7 +177,7 @@ ul li.checked::before {
     width: 30px;
     margin-right: 10px;
 }
-.checkpoint-on-svg{ 
+.checkpoint-on-svg{
     position: absolute;
     height: 30px;
     width: 30px;
@@ -267,5 +275,5 @@ border: solid 1px rgba(85, 85, 85, 1);
 
 .tagsDiv {
     display: flex;
-
+    gap: 5px;
 }
