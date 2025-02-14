@@ -16,7 +16,7 @@ padding: 10px;
     width: 100%;
     max-width: 885px;
     background: white;
-    margin: 100px auto 20px;
+    margin: 100px 20px;
     padding: 40px 40px 70px;
     border-radius: 40px;
 }
@@ -276,4 +276,112 @@ border: solid 1px rgba(85, 85, 85, 1);
 .tagsDiv {
     display: flex;
     gap: 5px;
+}
+
+
+
+
+
+
+
+
+
+.sidebar {
+    margin-top: 100px;
+    width: 250px;
+    height: 1000px;           /* Stała wysokość: 100% widoku przeglądarki */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;        /* Jeśli zawartość przekroczy wysokość, pojawi się pasek przewijania */
+}
+
+  /* Kontener główny – ustawienie flex, aby sidebar i główna aplikacja były obok siebie */
+.container {
+    display: flex;
+}
+
+  /* Główna aplikacja obok sidebaru */
+.todo-app {
+    /* margin-left: 270px;      Szerokość sidebaru + odstęp */
+    width: calc(100% - 270px);
+}
+
+  /* Sidebar – wyszukiwarka */
+.sidebar-search {
+    margin-bottom: 20px;
+}
+
+.sidebar-search input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+  /* Sekcje w sidebar */
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+  /* Menu w sidebar */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.sidebar-menu li:hover {
+    background-color: #e0e0e0;
+}
+
+  /* Style dla przycisków w sidebar */
+.add-new-list,
+.add-new-tag {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.add-new-list:hover,
+.add-new-tag:hover {
+    background-color: #0056b3;
+}
+
+  /* Style tagów – używamy stylów z klasy addedTag */
+.addedTag {
+    display: inline-block;
+    background: rgba(218, 218, 218, 0.33);
+    color: rgba(170, 170, 170, 1);
+    border-radius: 60px;
+    font-size: 8px;
+    padding: 0.5em 0.875em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+  /* Opcjonalnie: dostosowanie stylu tagów w sidebar (jeśli chcesz inny kolor lub rozmiar) */
+.tags-menu .addedTag {
+    font-size: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: wh
 }

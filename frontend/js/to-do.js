@@ -151,6 +151,7 @@ document.addEventListener("click", function (event) {
 // Wczytaj zadania po załadowaniu strony
 document.addEventListener("DOMContentLoaded", displayTasks);
 
+
 // DONE 1. po klikniecu na tag button dodac focus na input
 // DONE 2. dodać listę domyślnych wartości po kliknieciu na przycisk
 // 3. mozliwosc filtrowania wartości z listy po wpisaniu wartosci  w input

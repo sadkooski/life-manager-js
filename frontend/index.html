@@ -7,6 +7,52 @@
     <link rel="stylesheet" href="/frontend/css/style.css">
 </head>
 <body>
+
+<div class="container">
+    <!-- Sidebar Menu -->
+    <div class="sidebar">
+    <div class="sidebar-search">
+        <input type="text" id="sidebar-search-input" placeholder="Search...">
+    </div>
+
+    <div class="sidebar-section tasks">
+        <h3>Tasks</h3>
+        <ul class="sidebar-menu">
+            <li data-category="upcoming">Upcoming</li>
+            <li data-category="today">Today</li>
+            <li data-category="calendar">Calendar</li>
+            <li data-category="sticky-wall">Sticky Wall</li>
+            <li data-category="archived">Archived</li>
+        </ul>
+    </div>
+
+    <div class="sidebar-section lists">
+        <h3>Lists</h3>
+        <ul class="sidebar-menu lists-menu">
+        <!-- Domyślne listy -->
+            <li data-list="Shopping">Shopping</li>
+            <li data-list="Chores">Chores</li>
+            <li data-list="Meetings">Meetings</li>
+            <li data-list="Fitness">Fitness</li>
+            <!-- Tutaj będą dodawane listy utworzone przez użytkownika -->
+        </ul>
+        <button class="add-new-list">Add New List</button>
+    </div>
+    
+    <div class="sidebar-section tags">
+        <h3>Tags</h3>
+        <ul class="sidebar-menu tags-menu">
+            <!-- Domyślne tagi -->
+            <li class="addedTag" data-tag="Work">Work</li>
+            <li class="addedTag" data-tag="Personal">Personal</li>
+            <li class="addedTag" data-tag="Urgent">Urgent</li>
+            <li class="addedTag" data-tag="Low Priority">Low Priority</li>
+            <!-- Tutaj będą dodawane tagi utworzone przez użytkownika -->
+        </ul>
+        <button class="add-new-tag">Add New Tag</button>
+    </div>
+    </div>
+
     <div class="container">
         <div class="todo-app">
             <h2>Recent Tasks</h2>
