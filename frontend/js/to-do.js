@@ -1,155 +1,163 @@
 
-const inputTask = document.querySelector(".input-task");
-const inputDescription = document.querySelector(".input-descr");
-const listContainer = document.getElementById("list-container");
-const tagsContainer = document.querySelector(".row-input-elements");
-const tagList = document.querySelector('.tag-list');
 
-const tagOptions = ["Work", "Personal", "Urgent", "Low Priority"];
-const listOptions = ["Shopping", "Chores", "Meetings", "Fitness"];
 
-// Dynamiczna zmiana wyglądu pola opisu
-inputDescription.addEventListener("input", function () {
-    if (inputDescription.value !== "") {
-        tagsContainer.style.flexDirection = "column";
-        tagsContainer.style.alignItems = "normal";
-        tagsContainer.style.gap = "10px";
-        inputDescription.style.maxWidth = "100%";
-    } else {
-        tagsContainer.style.flexDirection = "row";
-        tagsContainer.style.alignItems = "center";
-        tagsContainer.style.gap = "5px";
-        inputDescription.style.maxWidth = "13.1ch";
-    }
-});
 
-// Funkcja dodawania zadania
-function addTask() {
-    if (inputTask.value === '') {
-        alert("You must write something");
-        return;
-    }
 
-    let taskData = {
-        task: inputTask.value,
-        description: inputDescription.value,
-        tags: Array.from(document.querySelectorAll(".tag-list .addedTag[style*='background-color: blue']")).map(tag => tag.textContent.trim()),
-        lists: Array.from(document.querySelectorAll(".tag-list .addedTag[style*='background-color: red']")).map(list => list.textContent.trim())
-    };
 
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    tasks.push(taskData);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
 
-    displayTasks();
-    resetInputs();
-}
 
-// Funkcja wyświetlająca zadania z Local Storage
-function displayTasks() {
-    listContainer.innerHTML = "";
-    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-    tasks.forEach((taskData, index) => {
-        let li = document.createElement("li");
-        li.innerHTML = `
-            <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
-            <img class="checkpoint-on-svg" src="/frontend/public/icons/selection-box-on.svg">
-            <div>
-                <strong class="input-box input-task">${taskData.task}</strong>
-                ${taskData.description ? `<p class="input-box input-descr-displayed">${taskData.description}</p>` : ''}
-                <div class="tagsDiv">
-                    ${taskData.tags.map(tag => `<li class="addedTag" style="background-color: blue; color: white; border-radius: 10px">${tag}</li>`).join('')}
-                    ${taskData.lists.map(list => `<li class="addedTag" style="background-color: red; color: white; border-radius: 2px"">${list}</li>`).join('')}
-                </div>
-            </div>
-            <img class="trash-svg" src="/frontend/public/icons/trash.svg" data-index="${index}">
-            <img class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
-        `;
 
-        listContainer.appendChild(li);
-    });
-}
 
-// Funkcja resetowania inputów
-function resetInputs() {
-    inputTask.value = "";
-    inputDescription.value = "";
-    tagsContainer.style.flexDirection = "row";
-    tagsContainer.style.alignItems = "center";
-    tagsContainer.style.gap = "5px";
-    inputDescription.style.maxWidth = "14ch";
-    tagList.innerHTML = ''; // Czyszczenie listy tagów
-}
 
-// Usuwanie zadania po kliknięciu w ikonę kosza
-listContainer.addEventListener("click", function (event) {
-    if (event.target.classList.contains("trash-svg")) {
-        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        let index = event.target.getAttribute("data-index");
 
-        tasks.splice(index, 1);
-        localStorage.setItem("tasks", JSON.stringify(tasks));
 
-        displayTasks();
-    }
-});
 
-// Funkcja do obsługi dodawania tagów i list
-function toggleInput(type) {
-    let container = document.querySelector(type === 'tag' ? '.tag-input-container' : '.list-input-container');
-    let input = document.querySelector('.dynamic-input');
-    let dropdown = document.querySelector(type === 'tag' ? '.tag-dropdown' : '.list-dropdown');
-    let options = type === 'tag' ? tagOptions : listOptions;
 
-    if (!input) {
-        container.insertAdjacentHTML("afterbegin", `<input type="text" class="dynamic-input" name="${type}" placeholder="${type === 'tag' ? 'Enter tag...' : 'Enter list name...'}">`);
-        input = container.querySelector('.dynamic-input');
-        input.focus();
-        dropdown.style.display = 'flex';
-        dropdown.innerHTML = options.map(option => `<button class="dropdown-item" onclick="selectOption('${type}', '${option}')">${option}</button>`).join('');
-    } else {
-        dropdown.style.display = 'none';
 
-        let markupTag = `<li class="addedTag" style="background-color: ${type === 'tag' ? 'blue' : 'red'}; color: white; border-radius: ${type === 'tag' ? '10px' : '2px'};">
-            ${input.value}
-        </li>`;
 
-        if (input.value !== '') {
-            tagList.insertAdjacentHTML("beforeend", markupTag);
-            input.remove();
-        }
-    }
-}
+// const inputTask = document.querySelector(".input-task");
+// const inputDescription = document.querySelector(".input-descr");
+// const listContainer = document.getElementById("list-container");
+// const tagsContainer = document.querySelector(".row-input-elements");
+// const tagList = document.querySelector('.tag-list');
 
-// Funkcja do wyboru opcji z dropdowna
-function selectOption(type, value) {
-    let input = document.querySelector('.dynamic-input');
-    if (input) {
-        input.value = value;
-    }
-}
+// const tagOptions = ["Work", "Personal", "Urgent", "Low Priority"];
+// const listOptions = ["Shopping", "Chores", "Meetings", "Fitness"];
 
-// Zamknięcie inputów tagów i list po kliknięciu poza nimi
-document.addEventListener("click", function (event) {
-    let tagInput = document.querySelector(".tag-input-container .dynamic-input");
-    let listInput = document.querySelector(".list-input-container .dynamic-input");
-    let tagDropdown = document.querySelector(".tag-dropdown");
-    let listDropdown = document.querySelector(".list-dropdown");
+// inputDescription.addEventListener("input", function () {
+//     if (inputDescription.value !== "") {
+//         tagsContainer.style.flexDirection = "column";
+//         tagsContainer.style.alignItems = "normal";
+//         tagsContainer.style.gap = "10px";
+//         inputDescription.style.maxWidth = "100%";
+//     } else {
+//         tagsContainer.style.flexDirection = "row";
+//         tagsContainer.style.alignItems = "center";
+//         tagsContainer.style.gap = "5px";
+//         inputDescription.style.maxWidth = "13.1ch";
+//     }
+// });
 
-    if (!event.target.closest(".tag-input-container, .dynamic-input, .tag-dropdown")) {
-        if (tagInput) tagInput.remove();
-        if (tagDropdown) tagDropdown.style.display = "none";
-    }
+// function addTask() {
+//     if (inputTask.value === '') {
+//         alert("You must write something");
+//         return;
+//     }
 
-    if (!event.target.closest(".list-input-container, .dynamic-input, .list-dropdown")) {
-        if (listInput) listInput.remove();
-        if (listDropdown) listDropdown.style.display = "none";
-    }
-});
+//     let taskData = {
+//         task: inputTask.value,
+//         description: inputDescription.value,
+//         tags: Array.from(document.querySelectorAll(".tag-list .addedTag[style*='background-color: blue']")).map(tag => tag.textContent.trim()),
+//         lists: Array.from(document.querySelectorAll(".tag-list .addedTag[style*='background-color: red']")).map(list => list.textContent.trim())
+//     };
 
-// Wczytaj zadania po załadowaniu strony
-document.addEventListener("DOMContentLoaded", displayTasks);
+//     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+//     tasks.push(taskData);
+//     localStorage.setItem("tasks", JSON.stringify(tasks));
+
+//     displayTasks();
+//     resetInputs();
+// }
+
+// function displayTasks() {
+//     listContainer.innerHTML = "";
+//     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+//     tasks.forEach((taskData, index) => {
+//         let li = document.createElement("li");
+//         li.innerHTML = `
+//             <img class="checkpoint-off-svg" src="/frontend/public/icons/selection-box-off.svg">
+//             <img class="checkpoint-on-svg" src="/frontend/public/icons/selection-box-on.svg">
+//             <div>
+//                 <strong class="input-box input-task">${taskData.task}</strong>
+//                 ${taskData.description ? `<p class="input-box input-descr-displayed">${taskData.description}</p>` : ''}
+//                 <div class="tagsDiv">
+//                     ${taskData.tags.map(tag => `<li class="addedTag" style="background-color: blue; color: white; border-radius: 10px">${tag}</li>`).join('')}
+//                     ${taskData.lists.map(list => `<li class="addedTag" style="background-color: red; color: white; border-radius: 2px"">${list}</li>`).join('')}
+//                 </div>
+//             </div>
+//             <img class="trash-svg" src="/frontend/public/icons/trash.svg" data-index="${index}">
+//             <img class="chevron-right-svg" src="/frontend/public/icons/chevron-right.svg">
+//         `;
+
+//         listContainer.appendChild(li);
+//     });
+// }
+
+// function resetInputs() {
+//     inputTask.value = "";
+//     inputDescription.value = "";
+//     tagsContainer.style.flexDirection = "row";
+//     tagsContainer.style.alignItems = "center";
+//     tagsContainer.style.gap = "5px";
+//     inputDescription.style.maxWidth = "14ch";
+//     tagList.innerHTML = '';
+// }
+
+// listContainer.addEventListener("click", function (event) {
+//     if (event.target.classList.contains("trash-svg")) {
+//         let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+//         let index = event.target.getAttribute("data-index");
+
+//         tasks.splice(index, 1);
+//         localStorage.setItem("tasks", JSON.stringify(tasks));
+
+//         displayTasks();
+//     }
+// });
+
+// function toggleInput(type) {
+//     let container = document.querySelector(type === 'tag' ? '.tag-input-container' : '.list-input-container');
+//     let input = document.querySelector('.dynamic-input');
+//     let dropdown = document.querySelector(type === 'tag' ? '.tag-dropdown' : '.list-dropdown');
+//     let options = type === 'tag' ? tagOptions : listOptions;
+
+//     if (!input) {
+//         container.insertAdjacentHTML("afterbegin", `<input type="text" class="dynamic-input" name="${type}" placeholder="${type === 'tag' ? 'Enter tag...' : 'Enter list name...'}">`);
+//         input = container.querySelector('.dynamic-input');
+//         input.focus();
+//         dropdown.style.display = 'flex';
+//         dropdown.innerHTML = options.map(option => `<button class="dropdown-item" onclick="selectOption('${type}', '${option}')">${option}</button>`).join('');
+//     } else {
+//         dropdown.style.display = 'none';
+
+//         let markupTag = `<li class="addedTag" style="background-color: ${type === 'tag' ? 'blue' : 'red'}; color: white; border-radius: ${type === 'tag' ? '10px' : '2px'};">
+//             ${input.value}
+//         </li>`;
+
+//         if (input.value !== '') {
+//             tagList.insertAdjacentHTML("beforeend", markupTag);
+//             input.remove();
+//         }
+//     }
+// }
+
+// function selectOption(type, value) {
+//     let input = document.querySelector('.dynamic-input');
+//     if (input) {
+//         input.value = value;
+//     }
+// }
+
+// document.addEventListener("click", function (event) {
+//     let tagInput = document.querySelector(".tag-input-container .dynamic-input");
+//     let listInput = document.querySelector(".list-input-container .dynamic-input");
+//     let tagDropdown = document.querySelector(".tag-dropdown");
+//     let listDropdown = document.querySelector(".list-dropdown");
+
+//     if (!event.target.closest(".tag-input-container, .dynamic-input, .tag-dropdown")) {
+//         if (tagInput) tagInput.remove();
+//         if (tagDropdown) tagDropdown.style.display = "none";
+//     }
+
+//     if (!event.target.closest(".list-input-container, .dynamic-input, .list-dropdown")) {
+//         if (listInput) listInput.remove();
+//         if (listDropdown) listDropdown.style.display = "none";
+//     }
+// });
+
+// document.addEventListener("DOMContentLoaded", displayTasks);
 
 
 // DONE 1. po klikniecu na tag button dodac focus na input
@@ -164,6 +172,42 @@ document.addEventListener("DOMContentLoaded", displayTasks);
 
 //9. Strukturyzacja tasków na katalagoi, tagi i listy oddzilne okno z podzialem i podpisami
 //10. wyszukiawanie po oknie katalgów poszczegolnych tasków i po kliknieciu w rekord zaladowanie odpowiednie go taska w oknie powiekszonym z edycją
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,265 @@
-*{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Karla", serif;
+    font-style: normal;
+}
+
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: azure;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px 0;
+}
+
+main {
+    max-width: 100vw;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.to-do-app {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: width 0.3s ease-in-out;
+    padding: 20px;
+    gap: 20px;
+}
+
+.menu-section {
+    width: 20%;
+    background-color: #f0f0f0;
+}
+
+.tasks-section {
+    width: 50%;
+    background-color: #fdf8f8;
+    flex-grow: 1;
+}
+
+.details-section {
+    width: 30%;
+    background-color: #f0f0f0;
+}
+
+.container {
+display: flex;
+}
+
+
+
+/* TASKS SECTION */
+
+.tasks-heading {
+    align-items: center;
+    gap: 30px;
+}
+
+.tasks-title {
+    font-size: 45px;
+    font-weight: bold;
+    line-height: normal;
+    color: #2c2b2b;
+}
+
+.tasks-title-counter {
+    width: 45px;
+    height: 45px;
+    border: 1px solid #c0bdbd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15%;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+.tasks-add {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid #c0bdbd;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.tasks-add-text {
+    font-size: 20px;
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    overflow-y: auto;
+    color: rgba(85, 85, 85, 1);
+    height: 40px;
+    line-height: 40px;
+    padding: 0;
+    font-weight: bold;
+}
+.tasks-add-text::placeholder {
+    display: flex;
+    text-align: center;
+}
+
+.tasks-list {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.task-element {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    border: 1px solid #c0bdbd;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.task-element-start {
+    display: flex;
+    width: 100%;
+}
+
+.task-element-checkpoint {
+    display: flex;
+    align-items: center;
+}
+
+.task-element-content {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+}
+
+.task-element-text {
+    font-size: 20px;
+    line-height: normal;
+}
+
+.task-element-tags-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 44px;
+    gap: 10px;
+}
+
+.task-element-footer {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    gap: 5px;
+}
+
+.tasks-element-list {
+    /* display: flex;
+    flex-direction: row; */
+}
+
+
+
+
+
+
+
+.plus-icon {
+    display: flex;
+    height: 25px;
+    width: 25px;
+}
+.checkpoint-off-icon {
+    display: flex;
+    height: 27px;
+    width: 27px;
+}
+.trash-icon {
+    display: flex;
+    height: 25px;
+    width: 25px;
+}
+.chevron-right-icon {
+    display: flex;
+    height: 38px;
+    width: 38px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .menu-section {
+    width: 20%;
+    background-color: #f0f0f0;
+}
+
+.tasks-section {
+    width: 50%;
+    background-color: #fdf8f8;
+}
+
+.details-section {
+    width: 30%;
+    background-color: #f0f0f0;
+}
+
+.to-do-app:has(.tasks-section:not(:has(+ .menu-section, + .details-section))) .tasks-section {
+    width: 100%;
+}
+.to-do-app:has(.menu-section) .menu-section {
+    width: 20%;
+}
+.to-do-app:has(.menu-section) .tasks-section {
+    width: calc(100% - 20%);
+}
+.to-do-app:has(.details-section) .details-section {
+    width: 30%;
+}
+.to-do-app:has(.details-section) .tasks-section {
+    width: calc(100% - 30%);
+}
+.to-do-app:has(.menu-section, .details-section) .tasks-section {
+    width: 50%;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+/* *{
 margin: 0;
 padding: 0;
 font-family: 'Poppins', sans-serif;
@@ -103,13 +364,10 @@ button{
 }
 
 .input-box{
-    /* word-wrap: break-word;
-    white-space: pre-wrap; */
     resize: none;
     border: none;
     outline: none;
     background: transparent;
-    /* box-sizing: content-box; */
     overflow-y: auto;
     color: rgba(85, 85, 85, 1);
 }
@@ -126,10 +384,8 @@ button{
 .input-descr{
 display: flex;
 height: 15px;
-/* max-height: 72px; */
 font-size: 13px;
 max-width: 13.1ch;
-/* margin-bottom: 5px; */
 }
 
 .input-descr-displayed {
@@ -167,10 +423,6 @@ ul li.checked {
 text-decoration: line-through;
 color: #555;
 }
-/*
-ul li.checked::before {
-    background-image: url(/frontend/public/icons/selection-box-on.svg);
-} */
 
 .checkpoint-off-svg{
     height: 30px;
@@ -289,25 +541,21 @@ border: solid 1px rgba(85, 85, 85, 1);
 .sidebar {
     margin-top: 100px;
     width: 250px;
-    height: 1000px;           /* Stała wysokość: 100% widoku przeglądarki */
+    height: 1000px;
     background-color: #f9f9f9;
     padding: 20px;
     border-right: 1px solid #ddd;
-    overflow-y: auto;        /* Jeśli zawartość przekroczy wysokość, pojawi się pasek przewijania */
+    overflow-y: auto;
 }
 
-  /* Kontener główny – ustawienie flex, aby sidebar i główna aplikacja były obok siebie */
 .container {
     display: flex;
 }
 
-  /* Główna aplikacja obok sidebaru */
 .todo-app {
-    /* margin-left: 270px;      Szerokość sidebaru + odstęp */
     width: calc(100% - 270px);
 }
 
-  /* Sidebar – wyszukiwarka */
 .sidebar-search {
     margin-bottom: 20px;
 }
@@ -319,7 +567,6 @@ border: solid 1px rgba(85, 85, 85, 1);
     border-radius: 4px;
 }
 
-  /* Sekcje w sidebar */
 .sidebar-section {
     margin-bottom: 30px;
 }
@@ -330,7 +577,6 @@ border: solid 1px rgba(85, 85, 85, 1);
     color: #333;
 }
 
-  /* Menu w sidebar */
 .sidebar-menu {
     list-style: none;
     padding: 0;
@@ -348,7 +594,6 @@ border: solid 1px rgba(85, 85, 85, 1);
     background-color: #e0e0e0;
 }
 
-  /* Style dla przycisków w sidebar */
 .add-new-list,
 .add-new-tag {
     width: 100%;
@@ -366,7 +611,6 @@ border: solid 1px rgba(85, 85, 85, 1);
     background-color: #0056b3;
 }
 
-  /* Style tagów – używamy stylów z klasy addedTag */
 .addedTag {
     display: inline-block;
     background: rgba(218, 218, 218, 0.33);
@@ -378,10 +622,9 @@ border: solid 1px rgba(85, 85, 85, 1);
     margin-bottom: 5px;
 }
 
-  /* Opcjonalnie: dostosowanie stylu tagów w sidebar (jeśli chcesz inny kolor lub rozmiar) */
 .tags-menu .addedTag {
     font-size: 10px;
     padding: 5px 10px;
     background-color: #007bff;
     color: wh
-}
+} */
