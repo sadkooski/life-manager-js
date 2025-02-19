@@ -4,6 +4,8 @@
     box-sizing: border-box;
     font-family: "Karla", serif;
     font-style: normal;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 ul, ol {
@@ -16,45 +18,33 @@ body {
     background-color: azure;
     color: #333;
     line-height: 1.6;
-    padding: 20px 0;
+    /* width: 100%;
+    min-height: 100vh; */
 }
 
 main {
-    max-width: 100vw;
-    margin: 0 auto;
+    display: flex;
     background-color: white;
+    height: calc(100vh - 20px); 
+    margin-top: 20px;
 }
 
 .to-do-app {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     padding: 20px;
+    height: 100%;
+    overflow: hidden;
+    
 }
 
 .section {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /* height: 100vh; */
     transition: width 0.3s ease-in-out;
     padding: 20px;
     gap: 20px;
-}
-
-.menu-section {
-    width: 20%;
-    background-color: #f0f0f0;
-}
-
-.tasks-section {
-    width: 50%;
-    background-color: #fdf8f8;
-    flex-grow: 1;
-}
-
-.details-section {
-    width: 30%;
-    background-color: #f0f0f0;
 }
 
 .container {
@@ -63,7 +53,16 @@ display: flex;
 
 
 
+
+
 /* TASKS SECTION */
+
+.tasks-section {
+    width: 48%;
+    background-color: white;
+    flex-grow: 1;
+    padding-top: 0;
+}
 
 .tasks-heading {
     align-items: center;
@@ -104,17 +103,17 @@ display: flex;
     outline: none;
     background: transparent;
     overflow-y: auto;
-    color: rgba(85, 85, 85, 1);
+    color: rgba(170, 170, 170, 1);
     height: 40px;
     line-height: 40px;
     padding: 0;
     font-weight: bold;
+    margin-left: 10px;
 }
 .tasks-add-text::placeholder {
     display: flex;
     text-align: center;
 }
-
 .tasks-list {
     display: flex;
     width: 100%;
@@ -145,7 +144,7 @@ display: flex;
 .task-element-content {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .task-element-text {
@@ -156,7 +155,7 @@ display: flex;
 .task-element-tags-container {
     display: flex;
     justify-content: flex-start;
-    margin-left: 44px;
+    margin-left: 40px;
     gap: 10px;
 }
 
@@ -168,15 +167,320 @@ display: flex;
 }
 
 .tasks-element-list {
-    /* display: flex;
-    flex-direction: row; */
 }
 
 
 
+/* MENU SECTION */
+
+.menu-section {
+    width: 22%;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    padding-bottom: 25px;
+}
+
+.menu-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-title {
+    color: rgb(44, 43, 43);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.menu-searchbar {
+    display: flex;
+    position: relative;
+}
+
+.menu-searchbar-input {
+    width: 100%;
+    padding: 8px 5px 8px 35px;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid rgba(170, 170, 170, 1);
+    font-size: 16px;
+    outline: none;
+}
+
+.menu-searchbar-input::placeholder {
+    color: rgba(170, 170, 170, 1);
+}
+
+.menu-list-title {
+    font-size: 18px;
+    line-height: normal;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    color: rgb(44, 43, 43);
+}
+
+.menu-ul {
+    border-bottom: 1px solid rgba(170, 170, 170, 1);
+    padding: 5px 0px 15px;
+}
+
+.menu-li {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+}
+
+.menu-option-color {
+    background-color: red;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.menu-option-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(85, 85, 85, 1);
+    margin-left: 15px;
+}
+
+.menu-counter {
+    display: flex;
+    justify-self: flex-end;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    color: rgba(85, 85, 85, 1);
+    line-height: normal;
+    padding: 2px 0px;
+    width: 35px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.menu-list-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+
+.menu-list-btn-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(85, 85, 85, 1);
+    margin-left: 10px;
+}
+
+.menu-tags {
+    display: flex;
+    gap: 10px;
+    border: none;
+    flex-wrap: wrap;
+}
+
+.menu-tags-option {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    white-space: nowrap;
+    color: rgba(85, 85, 85, 1);
+    background-color:aquamarine;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.menu-tags-option:last-of-type {
+    background-color: #f0f0f0;
+}
+
+.menu-tag-btn {
+    display: flex;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: rgba(85, 85, 85, 1);
+    border-radius: 5px;
+}
+
+.menu-tag-btn-text {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    color: rgba(85, 85, 85, 1);
+    background-color: transparent;
+}
+
+.menu-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    gap: 10px;
+}
+
+.menu-footer-btn {
+    display: flex;
+    gap: 10px;
+    border: none;
+    background-color: transparent;
+}
+
+.menu-footer-btn-text {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    color: rgba(85, 85, 85, 1);
+}
 
 
+/* DETAILS SECTION */
 
+.details-section {
+    width: 30%;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    padding-bottom: 25px;
+}
+
+.details-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.details-title {
+    color: rgb(44, 43, 43);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.details-searchbar {
+    display: flex;
+    position: relative;
+}
+
+.details-task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.details-task-content textarea {
+    background-color: transparent;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 10px;
+    line-height: 1em;
+    resize: none;
+    overflow: hidden;
+}
+
+.details-task-title {
+    height: 2.5em;
+}
+
+.details-task-description {
+    height: 6em;
+}
+
+.details-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.details-list-element {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.details-list-options {
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid rgba(170, 170, 170, 1);
+    padding: 5px 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(85, 85, 85, 1);
+    fill: rgba(85, 85, 85, 1);
+}
+
+.details-list-tag-option {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    white-space: nowrap;
+    color: rgba(85, 85, 85, 1);
+    border-radius: 8px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    background-color:rgb(127, 255, 212);
+}
+
+.details-list-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.details-list-element-title {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    color: rgba(85, 85, 85, 1);
+    width: 100px;
+}
+
+.details-list-tag-btn {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: normal;
+    color: rgba(85, 85, 85, 1);
+    background-color:rgb(240, 240, 240);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.details-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: auto;
+}
+
+.details-footer button {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(85, 85, 85, 1);
+    padding: 10px 30px;
+    border-radius: 10px;
+    flex: 1;
+}
+
+.details-fotter-delete-btn {
+    border: 1.5px solid rgba(170, 170, 170, 1);
+    background-color: transparent;
+}
+
+.details-fotter-save-btn {
+    border: none;
+    background-color: rgb(255, 205, 89);
+}
+
+/* ICONS */
+
+
+img {
+    display: flex;
+    height: 18px;
+    width: 18px;
+}
 
 .plus-icon {
     display: flex;
@@ -199,8 +503,21 @@ display: flex;
     width: 38px;
 }
 
+.burger-icon {
+    display: flex;
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+}
 
-
+.search-icon {
+    display: flex;
+    height: 18px;
+    width: 18px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+}
 
 
 

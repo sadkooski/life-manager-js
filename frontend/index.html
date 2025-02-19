@@ -13,89 +13,99 @@
     <main>
         <div class="to-do-app">
 
-        <!-- <section class="menu-section section">
-            <div class="menu-nav">
+        <section class="menu-section section">
+            <div class="menu-heading">
                 <h3 class="menu-title">Menu</h3>
-                <img class="burger-icon" src="" alt="Burger icon">
+                <img class="burger-icon" src="public/icons/burger.svg" alt="Burger icon">
             </div>
 
             <div class="menu-searchbar">
-                <img class="search-icon" src="" alt="Search icon">
+                <img class="search-icon" src="public/icons/search.svg" alt="Search icon">
                 <input class="menu-searchbar-input" type="text" placeholder="Search">
             </div>
 
-            <ul class="menu-tasks">
-                <li class="menu-tasks-option">
-                    <img class="upcoming-icon" src="" alt="Upcoming icon">
+            <div class="menu-container">
+                <h4 class="menu-list-title">Tasks</h4>
+                <ul class="menu-tasks menu-ul">
+                <li class="menu-tasks-option menu-li">
+                    <img class="upcoming-icon" src="public/icons/search.svg" alt="Upcoming icon">
                     <span class="menu-option-title">Upcoming</span>
                     <div class="menu-counter">12</div>
                 </li>
-                <li class="menu-tasks-option">
-                    <img class="today-icon" src="" alt="Today icon">
+                <li class="menu-tasks-option menu-li">
+                    <img class="today-icon" src="public/icons/search.svg" alt="Today icon">
                     <span class="menu-option-title">Today</span>
                     <div class="menu-counter">5</div>
                 </li>
-                <li class="menu-tasks-option">
-                    <img class="calendar-icon" src="" alt="Calendar icon">
+                <li class="menu-tasks-option menu-li ">
+                    <img class="calendar-icon" src="public/icons/search.svg" alt="Calendar icon">
                     <span class="menu-option-title">Calendar</span>
                 </li>
-                <li class="menu-tasks-option">
-                    <img class="sticky-wall-icon" src="" alt="Sticky Wall icon">
+                <li class="menu-tasks-option menu-li">
+                    <img class="sticky-wall-icon" src="public/icons/search.svg" alt="Sticky Wall icon">
                     <span class="menu-option-title">Sticky Wall</span>
                 </li>
-                <li class="menu-tasks-option">
-                    <img class="archived-icon" src="" alt="Archived Icon">
+                <li class="menu-tasks-option menu-li">
+                    <img class="archived-icon" src="public/icons/search.svg" alt="Archived Icon">
                     <span class="menu-option-title">Archived</span>
                 </li>
-            </ul>
-
-            <ul class="menu-lists">
-                <li class="menu-lists-option">
+                </ul>
+            </div>
+            
+            <div class="menu-container">
+                <h4 class="menu-list-title">Lists</h4>
+                <ul class="menu-lists menu-ul">
+                <li class="menu-lists-option menu-li">
                     <span class="menu-option-color"></span>
-                    <span class="menu-option-title">Upcoming</span>
-                    <div class="menu-tasks-counter">12</div>
+                    <span class="menu-option-title">Personal</span>
+                    <div class="menu-counter">12</div>
                 </li>
-                <li class="menu-lists-option">
+                <li class="menu-lists-option menu-li">
                     <span class="menu-option-color"></span>
-                    <span class="menu-option-title">Today</span>
+                    <span class="menu-option-title">Work</span>
                     <div class="menu-counter">5</div>
                 </li>
-                <li class="menu-lists-option">
+                <li class="menu-lists-option menu-li">
                     <span class="menu-option-color"></span>
-                    <span class="menu-option-title">Calendar</span>
+                    <span class="menu-option-title">Recreation</span>
                     <div class="menu-counter">7</div>
                 </li>
-                <li class="menu-lists-option">
+                <li class="menu-lists-option menu-li">
                     <button class="menu-list-btn">
-                        <img class="plus-icon" src="" alt="">
+                        <img class="plus-icon" src="public/icons/search.svg" alt="">
                         <span class="menu-list-btn-text">Add New List</span>
                     </button>
                 </li>
-            </ul>
-
-            <ul class="menu-tags">
-                <li class="menu-tags-option">Tag 1</li>
-                <li class="menu-tags-option">Tag 2</li>
-                <li class="menu-tags-option">Tag 3</li>
-                <li class="menu-tags-option">
+                </ul>
+            </div>
+            
+            <div class="menu-container">
+                <h4 class="menu-list-title">Tags</h4>
+                <ul class="menu-tags menu-ul">
+                <li class="menu-tags-option menu-li">Tag 1</li>
+                <li class="menu-tags-option menu-li">Tag 2</li>
+                <li class="menu-tags-option menu-li">Tag 3</li>
+                <li class="menu-tags-option menu-li">
                     <button class="menu-tag-btn">
-                        <img class="plus-icon" src="" alt="">
-                        <span class="menu-tag-btn-text">Add Tag</span>
+                        <!-- <img class="plus-icon" src="public/icons/search.svg" alt=""> -->
+                        <span class="menu-tag-btn-text">+ Add Tag</span>
                     </button>
                 </li>
-            </ul>
+                </ul>
+            </div>
+            
 
-            <div class="menu-fotter">
-                <button class="menu-fotter-settings-btn">
-                    <img class="settings-icon" src="" alt="">
-                    <span class="menu-fotter-btn-text">Settings</span>
+            <div class="menu-footer">
+                <button class="menu-footer-btn">
+                    <img class="settings-icon" src="public/icons/search.svg" alt="">
+                    <span class="menu-footer-btn-text">Settings</span>
                 </button>
-                <button class="menu-fotter-singout-btn">
-                    <img class="signout-icon" src="" alt="">
-                    <span class="menu-fotter-btn-text">Sign Out</span>
+                <button class="menu-footer-btn">
+                    <img class="signout-icon" src="public/icons/search.svg" alt="">
+                    <span class="menu-footer-btn-text">Sign Out</span>
                 </button>
             </div>
-        </section> -->
+        </section>
 
         <section class="tasks-section section">
             <div class="tasks-heading container">
@@ -137,40 +147,15 @@
                         </div>
                     </li>
 
-                    <li class="task-element">
-                        <div class="task-element-start">
-                                <div class="task-element-checkpoint">
-                                <img class="checkpoint-off-icon" src="/frontend/public/icons/selection-box-off.svg" alt="">
-                                <!-- <img class="checkpoint-on-icon" src="/frontend/public/icons/selection-box-on.svg" alt=""> -->
-                                <div class="task-element-content">
-                                    <strong class="task-element-text">Task Title</strong>
-                                </div>
-                            </div>
-                        
-                            <div class="task-element-footer">
-                                <img class="trash-icon" src="/frontend/public/icons/trash.svg" alt="Trash icon">
-                                <img class="chevron-right-icon" src="/frontend/public/icons/chevron-right.svg" alt="Chevron right icon">
-                            </div>
-                        </div>
-                        <!-- <p class="task-element-descrition">Task Description</p> -->
-                        <div class="task-element-tags-container">
-                            <ul class="task-element-tags-list">
-                                <li class="task-element-tag">Work</li>
-                            </ul>
-                            <div class="tasks-element-list">
-                                <img class="list-icon" src="" alt="">
-                                <span class="task-element-list-text">Personal</spa>
-                            </div>
-                        </div>
-                    </li>
+                    
                 </ul>
             </div>
         </section>
 
-        <!-- <section class="details-section section">
+        <section class="details-section section">
             <div class="details-heading container">
                 <h2 class="details-title">Task:</h2>
-                <img class="close-icon" src="" alt="Close icon">
+                <img class="close-icon" src="public/icons/search.svg" alt="Close icon">
             </div>
 
             <div class="details-task-content">
@@ -189,16 +174,16 @@
                 </li>
                 <li class="details-list-element">
                     <span class="details-list-element-title">Due Date</span>
-                    <input type="date">
+                    <input class="details-list-options" type="date">
                 </li>
                 <li class="details-list-element">
                     <span class="details-list-element-title">Tags</span>
                     <ul class="details-list-tags">
                         <li class="details-list-tag-option">Tag 1</li>
-                        <li class="details-list-tag-option ">
-                            <button class="details-list-tag-btn">
-                                <img class="plus-icon" src="" alt="">
-                                <span class="details-list-tag-btn-text">Add Tag</span>
+                        <li>
+                            <button class="details-list-tag-btn"> + Add Tag
+                                <!-- <img class="plus-icon" src="" alt=""> -->
+                                <!-- <span class="details-list-tag-btn-text"></span> -->
                             </button>
                         </li>
                     </ul>
@@ -213,13 +198,14 @@
                     Save Changes
                 </button>
             </div>
-        </section> -->
+        </section>
 
         </div>
     </main>
 <script src="/frontend/js/to-do.js"></script>
 </body>
 </html>
+
 <!-- <div class="container">
     <div class="sidebar">
     <div class="sidebar-search">
