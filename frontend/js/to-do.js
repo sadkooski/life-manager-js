@@ -1,4 +1,120 @@
+const tagOptions = ["Work", "Personal", "Urgent", "Low Priority"];
+const listOptions = ["Shopping", "Chores", "Meetings", "Fitness"];
 
+document.addEventListener('DOMContentLoaded', () => {
+    const addTaskBtn = document.querySelector('.tasks-add-btn');
+    const detailsSection = document.querySelector('.details-section');
+    const closeIcon = document.querySelector('.close-icon');
+    const detailsFooter = detailsSection.querySelector('.details-footer');
+    const detailsDeleteBtn = detailsSection.querySelector('.details-footer-delete-btn')
+    const detailsSaveBtn = detailsSection.querySelector('.details-footer-save-btn')
+    const detailsAddBtn = detailsSection.querySelector('.details-footer-add-btn')
+    const detailsTagsList = detailsSection.querySelector('.details-list-tags');
+
+    const taskTitle = document.querySelector('.details-task-title');
+    const taskListSelect = document.querySelector('.details-list-options');
+    const taskDate = document.querySelector('input[type="date"]');
+    const tasksList = document.querySelector('.tasks-list');
+
+    function renderTagOptions() {
+        detailsTagsList.innerHTML = ''; // Czyści listę
+        tagOptions.forEach(tag => {
+            detailsTagsList.insertAdjacentHTML('beforeend', `<li class="details-list-tag-option" onclick="toggleTag(this)" style="cursor: pointer;">${tag}</li>`);
+        });
+        // Dodanie przycisku Add Tag na końcu listy
+        detailsTagsList.insertAdjacentHTML('beforeend', '<li class="add-tag-li"><input type="text" class="add-tag-input" placeholder="New tag" style="display:none;"/><button class="details-list-tag-btn" onclick="toggleTagInput()">+ Add Tag</button></li>');
+    }
+
+    // Funkcja zaznaczania tagu
+    window.toggleTag = (element) => {
+        element.classList.toggle('selected');
+        element.style.backgroundColor = element.classList.contains('selected') ? '#ADD8E6' : '';
+    };
+
+    window.toggleTagInput = () => {
+        const input = document.querySelector('.add-tag-input');
+        if (input.style.display === 'none') {
+            input.style.display = 'inline-block';
+            input.focus();
+        } else if (input.value.trim() !== '') {
+            tagOptions.push(input.value.trim());
+            renderTagOptions();
+        }
+    };
+
+    detailsAddBtn.addEventListener('click', () => {
+        if (taskTitle.value.trim() === '') {
+            alert('Title is required');
+            return;
+        }
+
+        const selectedTags = Array.from(detailsTagsList.querySelectorAll('.details-list-tag-option.selected')).map(el => el.textContent);
+        const taskData = {
+            title: taskTitle.value.trim(),
+            list: taskListSelect.value || '',
+            date: taskDate.value || '',
+            tags: selectedTags
+        };
+
+        localStorage.setItem(`task-${Date.now()}`, JSON.stringify(taskData));
+
+        let tagsHtml = selectedTags.map(tag => `<li class="task-element-tag">${tag}</li>`).join('');
+        let listHtml = taskData.list ? `<div class="tasks-element-list"><img class="list-icon" src="/frontend/public/icons/plus.svg" alt=""><span class="task-element-list-text">${taskData.list}</span></div>` : '';
+
+        tasksList.insertAdjacentHTML('beforeend', `
+            <li class="task-element">
+                <div class="task-element-start">
+                    <div class="task-element-checkpoint">
+                        <img class="checkpoint-off-icon" src="/frontend/public/icons/selection-box-off.svg" alt="">
+                        <div class="task-element-content">
+                            <strong class="task-element-text">${taskData.title}</strong>
+                        </div>
+                    </div>
+                    <div class="task-element-footer">
+                        <img class="trash-icon" src="/frontend/public/icons/trash.svg" alt="Trash icon">
+                        <img class="chevron-right-icon" src="/frontend/public/icons/chevron-right.svg" alt="Chevron right icon">
+                    </div>
+                </div>
+                <div class="task-element-tags-container">
+                    <ul class="task-element-tags-list">
+                        ${tagsHtml}
+                    </ul>
+                    ${listHtml}
+                </div>
+            </li>
+        `);a
+
+        detailsSection.style.display = 'none';
+        detailsSection.classList.remove('open');
+        addTaskBtn.disabled = false;
+        taskTitle.value = '';
+        taskListSelect.value = '';
+        taskDate.value = '';
+    });
+
+    // Funkcja otwierająca sekcję details-section
+    addTaskBtn.addEventListener('click', () => {
+        if (!detailsSection.classList.contains('open')) {
+            detailsSection.style.display = 'flex';
+            detailsSection.classList.add('open');
+            detailsDeleteBtn.style.display = 'none';
+            detailsSaveBtn.style.display = 'none';
+            detailsAddBtn.style.display = 'flex'
+            renderTagOptions(); // Renderuje tagi przy otwieraniu sekcji
+            addTaskBtn.disabled = true; // Blokowanie ponownego kliknięcia
+        }
+    });
+
+    // Zamknięcie sekcji po kliknięciu w close-icon
+    closeIcon.addEventListener('click', () => {
+        detailsSection.style.display = 'none';
+        detailsSection.classList.remove('open');
+        detailsDeleteBtn.style.display = 'flex';
+        detailsSaveBtn.style.display = 'flex';
+        detailsAddBtn.style.display = 'none'
+        addTaskBtn.disabled = false; // Odblokowanie tasks-add-btn
+    });
+});
 
 
 

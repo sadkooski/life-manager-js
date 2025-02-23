@@ -24,15 +24,16 @@ body {
 
 main {
     display: flex;
+    justify-content: center;
     background-color: white;
-    height: calc(100vh - 20px); 
-    margin-top: 20px;
+    height: calc(100vh - 80px);
+    margin-top: 80px;
 }
 
 .to-do-app {
     display: flex;
-    width: 100%;
-    padding: 20px;
+    width: 95%;
+    padding: 30px;
     height: 100%;
     overflow: hidden;
     
@@ -88,12 +89,20 @@ display: flex;
     font-size: 35px;
 }
 
-.tasks-add {
+.tasks-add-btn {
+    display: flex;
+    gap: 10px;
     margin-top: 20px;
-    padding: 10px 20px;
+    padding:25px 20px;
     border: 1px solid #c0bdbd;
     border-radius: 8px;
     align-items: center;
+    font-size: 20px;
+    background: transparent;
+    color: rgba(170, 170, 170, 1);
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
 }
 
 .tasks-add-text {
@@ -156,7 +165,12 @@ display: flex;
     display: flex;
     justify-content: flex-start;
     margin-left: 40px;
-    gap: 10px;
+    gap: 20px;
+}
+
+.task-element-tags-list {
+    display: flex;
+    align-items: center;
 }
 
 .task-element-footer {
@@ -167,6 +181,9 @@ display: flex;
 }
 
 .tasks-element-list {
+display: flex;
+align-items: center;
+gap: 5px;
 }
 
 
@@ -339,6 +356,7 @@ display: flex;
 /* DETAILS SECTION */
 
 .details-section {
+    display: none;
     width: 30%;
     background-color: #f8f8f8;
     border-radius: 20px;
@@ -420,7 +438,7 @@ display: flex;
     border-radius: 8px;
     border-radius: 8px;
     padding: 10px 20px;
-    background-color:rgb(127, 255, 212);
+    background-color:rgb(240, 240, 240);
 }
 
 .details-list-tags {
@@ -463,14 +481,26 @@ display: flex;
     flex: 1;
 }
 
-.details-fotter-delete-btn {
+.details-footer-delete-btn {
+    display: flex;
+    align-items: center;
     border: 1.5px solid rgba(170, 170, 170, 1);
     background-color: transparent;
 }
 
-.details-fotter-save-btn {
+.details-footer-save-btn {
+    display: flex;
+    align-items: center;
     border: none;
     background-color: rgb(255, 205, 89);
+}
+
+.details-footer-add-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(170, 170, 170, 1);
+    background-color: transparent;
 }
 
 /* ICONS */
